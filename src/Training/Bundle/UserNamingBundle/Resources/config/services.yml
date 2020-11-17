@@ -1,0 +1,10 @@
+services:
+  Oro\Bundle\EntityBundle\Provider\EntityNameProvider: ~
+
+  Training\Bundle\UserNamingBundle\Provider\EntityNameProviderDecorator:
+    decorates: oro_locale.entity_name_provider
+    arguments:
+      - '@Training\Bundle\UserNamingBundle\Provider\EntityNameProviderDecorator.inner' # `decoration_inner_name`
+    tags:
+      - { name: oro_entity.name_provider, priority: -60 }
+
